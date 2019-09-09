@@ -49,6 +49,10 @@ app.post("/img/:name", (req, res) => {
   });
 });
 
+app.get("/img/:name", (req, res) => {
+  res.sendFile(`img/${req.params.name}.png`);
+})
+
 // post to log file
 app.post("/log/:name/", (req, res) => {
   console.log(req.body);
@@ -63,6 +67,9 @@ app.post("/log/:name/", (req, res) => {
   });
 });
 
+app.get ("/log/:name/", (req, res) => {
+  res.sendFile(`log/${req.params.name}.log`);
+})
 
 
 app.post("/model/", (req, res, err) => {
@@ -84,9 +91,7 @@ app.post("/model/", (req, res, err) => {
         console.log(`Node=>scp.stderr: ${data}`);
       });
     }
-
   })
-
 });
 
 
