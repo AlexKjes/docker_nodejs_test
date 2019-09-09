@@ -70,7 +70,7 @@ app.post("/model/", (req, res) => {
       console.log(err);
       res.sendStatus(500);
     } else {
-      res.sendStat<us(200);
+      res.sendStatus(200);
       exec('scp data/tmp/model.pyt alex@organiccode.net:~/ml_projects/kaggle_steel/models/latest.pyt')
     }
 
