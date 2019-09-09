@@ -17,7 +17,7 @@ try {
   fs.mkdirSync('data/img');
   fs.mkdirSync('data/log');
   fs.mkdirSync('data/tmp');
-}
+} catch {}
 
 app.use(bodyParser.json());
 app.use(bodyParser.text());
