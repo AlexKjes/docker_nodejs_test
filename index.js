@@ -2,12 +2,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const { exec } = require('child_process');
 
 const PORT = 8888;
 const HOST = "127.0.0.1";
 
 
 const app = express();
+
+
+
+// on app create
+fs.mkdirSync('data/img');
+fs.mkdirSync('data/log');
+fs.mkdirSync('data/tmp');
 
 
 app.use(bodyParser.json());
@@ -55,8 +63,17 @@ app.post("/log/:name/", (req, res) => {
 
 
 
-app.post("/code/", (req, res) => {
+app.post("/model/", (req, res) => {
+  fs.writeFile(`data/tmp/model.pyt`, req.body, err => {
+    if (err){
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.sendStat<us(200);
+      exec('scp data/tmp/model.pyt alex@organiccode.net:~/ml_projects/kaggle_steel/models/latest.pyt')
+    }
 
+  })
   console.log(req.body);
   res.sendStatus(200);
 
