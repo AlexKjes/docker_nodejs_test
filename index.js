@@ -13,10 +13,11 @@ const app = express();
 
 
 // on app create
-fs.mkdirSync('data/img');
-fs.mkdirSync('data/log');
-fs.mkdirSync('data/tmp');
-
+try {
+  fs.mkdirSync('data/img');
+  fs.mkdirSync('data/log');
+  fs.mkdirSync('data/tmp');
+}
 
 app.use(bodyParser.json());
 app.use(bodyParser.text());
