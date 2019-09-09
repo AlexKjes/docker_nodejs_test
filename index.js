@@ -69,7 +69,7 @@ app.post("/log/:name/", (req, res) => {
 });
 
 app.get ("/log/:name/", (req, res) => {
-  res.sendFile(`${__dirname}/log/${req.params.name}.log`);
+  res.sendFile(`${__dirname}/data/log/${req.params.name}.log`);
 })
 
 
