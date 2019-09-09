@@ -76,7 +76,7 @@ app.post("/model/", (req, res) => {
         console.log(`Node=>scp: ${data}`);
       });
       scp.stderr.on('data', data => {
-        console.log(`\033[0;31m Node=>scp: ${data}`);
+        console.log('\033[0;31m' + `Node=>scp: ${data}`);
       });
     }
 
