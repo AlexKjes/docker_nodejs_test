@@ -65,7 +65,10 @@ app.post("/log/:name/", (req, res) => {
 
 
 
-app.post("/model/", (req, res) => {
+app.post("/model/", (req, res, err) => {
+  if (err){
+    console.error(err);
+  }
   console.error(req.body);
   fs.writeFile(`data/tmp/model.py`, req.body, err => {
     if (err){
