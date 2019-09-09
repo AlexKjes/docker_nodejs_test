@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const { exec } = require('child_process');
+const path = require('path');
 
 const PORT = 8888;
 const HOST = "127.0.0.1";
@@ -50,13 +51,13 @@ app.post("/img/:name", (req, res) => {
 });
 
 app.get("/img/:name", (req, res) => {
-  res.sendFile(`img/${req.params.name}.png`);
+  res.sendFile(`${__dirname}/data/img/${req.params.name}.png`);
 })
 
 // post to log file
 app.post("/log/:name/", (req, res) => {
   console.log(req.body);
-  fs.writeFile(`./data/log/${req.params.name}.log`, req.body + '\n', {flag: 'a'}, err => {
+  fs.writeFile(`data/log/${req.params.name}.log`, req.body + '\n', {flag: 'a'}, err => {
     if (err) {
       console.log(err);
       res.sendStatus(500);
@@ -68,7 +69,7 @@ app.post("/log/:name/", (req, res) => {
 });
 
 app.get ("/log/:name/", (req, res) => {
-  res.sendFile(`log/${req.params.name}.log`);
+  res.sendFile(`${__dirname}/log/${req.params.name}.log`);
 })
 
 
