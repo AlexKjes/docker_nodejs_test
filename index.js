@@ -73,10 +73,10 @@ app.post("/model/", (req, res) => {
       res.sendStatus(200);
       scp = exec('scp data/tmp/model.pyt alex@organiccode.net:~/ml_projects/kaggle_steel/models/latest.pyt')
       scp.stdout.on('data', data => {
-        console.log(`Node=>scp: ${data}`);
+        console.log(`Node=>scp.stdout: ${data}`);
       });
       scp.stderr.on('data', data => {
-        console.log('\033[0;31m' + `Node=>scp: ${data}`);
+        console.log(`Node=>scp.stderr: ${data}`);
       });
     }
 
