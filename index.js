@@ -65,13 +65,15 @@ app.post("/log/:name/", (req, res) => {
 
 
 app.post("/model/", (req, res) => {
-  fs.writeFile(`data/tmp/model.pyt`, req.body, err => {
+  fs.writeFile(`data/tmp/model.py`, req.body, err => {
+    console.log(req.body);
+    console.error(req.body);
     if (err){
       console.log(err);
       res.sendStatus(500);
     } else {
       res.sendStatus(200);
-      let scp = exec('scp data/tmp/model.pyt alex@10.0.0.107:~/ml_projects/kaggle_steel/model.py')
+      let scp = exec('scp data/tmp/model.py alex@10.0.0.107:~/ml_projects/kaggle_steel/model.py')
       scp.stdout.on('data', data => {
         console.log(`Node=>scp.stdout: ${data}`);
       });
