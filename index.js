@@ -27,7 +27,7 @@ app.use(bodyParser.raw({
 }));
 
 app.use(bodyParser.raw({
-  type: 'application/zip, application/octet-stream',
+  type: '*/*',
   limit: '10mb'
 }));
 
