@@ -71,7 +71,7 @@ app.post("/model/", (req, res) => {
       res.sendStatus(500);
     } else {
       res.sendStatus(200);
-      let scp = exec('scp -i ./auth_cmd data/tmp/model.pyt -o GlobalKnownHostsFile=known_hosts alex@10.0.0.107:~/ml_projects/kaggle_steel/models/latest.pyt')
+      let scp = exec('scp data/tmp/model.pyt alex@10.0.0.107:~/ml_projects/kaggle_steel/models/latest.pyt')
       scp.stdout.on('data', data => {
         console.log(`Node=>scp.stdout: ${data}`);
       });
